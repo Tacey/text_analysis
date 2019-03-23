@@ -1,0 +1,12 @@
+#1/bin/bash
+
+cat $* | tr ‘A-Z’ ‘a-z’ > lowercase.txt
+
+cat lowercase.txt | tr -cs 'A-Za-z0-9' '[\012*]' >words.txt
+
+cat words.txt | sort | uniq -c | sort -rn > tokens.txt
+
+grep ' 1 ' tokens.txt > uniques.txt
+
+rm words.txt
+rm lowercase.txt
